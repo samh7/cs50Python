@@ -1,9 +1,9 @@
 def main():
-    fuel_amt("fraction: ") 
+    in_pt = input("Fraction: ")
+    print(fuel_amt( in_pt))
                   
-def fuel_amt(prompt):
+def fuel_amt(in_pt):
     while True:
-        in_pt = input(prompt)
         in_len = len(in_pt)
         f_left = ""
         f_right = ""
@@ -18,19 +18,20 @@ def fuel_amt(prompt):
         try:   
             f_right = int(f_right)
             f_left = int(f_left)
+            assert f_right > 0
             amt = (f_left/f_right) * 100
             break
         except ZeroDivisionError:
             pass
-        except ValueError:
+        except AssertionError:
             pass
-    
+        except ValueError:
+            pass 
     if amt >= 99:
-        print("F")
+        return "F"
     elif amt <= 1:
-        print("E")
+        return "E"
     else:
-        print(f"{amt:.0f}%")
-
-
-main()
+        return f"{amt:.0f}%"
+if __name__ == "__main__":
+    main()

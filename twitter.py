@@ -1,7 +1,8 @@
 def main():
-    user_in = str(input("what's up? "))
+    user_in = str(input("what's up? ")).lower()
     print(twttr(user_in))
 def twttr(user_in):
+    user_in = user_in.lower()
     in_len = len(user_in)
     tmp_in = ""
     for i in range(in_len):
@@ -11,4 +12,5 @@ def twttr(user_in):
 
     return tmp_in
 
-main()
+if __name__ == "__main__":
+    main()
